@@ -6,9 +6,8 @@ import { promisify } from 'util'
 export class ReaderFile{
   readonly readFile:Function
 
-  constructor(){
-    this.readFile = promisify<Function>(fs.readFile)
-    
+  public constructor(){
+    this.readFile = promisify<Function>(fs.readFile) 
   } 
   public async Read(filePath:string):Promise<string | undefined>{
     try{
