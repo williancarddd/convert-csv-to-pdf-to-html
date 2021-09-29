@@ -1,7 +1,10 @@
 
 export class ProcessorData{
-  static Process(data:(string | undefined)):( Array<any> | NodeJS.ErrnoException){
-    if(data) return data.replace(/['\r']/g, '').split('\n')
+  public static Process(data:(string | undefined)):(( Array<Array<any>>) | undefined){
+    if(data) return data.split('\r\n')
+      .map(line =>  {
+        return line.split(',')
+      })
     throw new Error('error processing data, probaly data is undefined.')
   }
 }
