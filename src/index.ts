@@ -2,6 +2,8 @@ import { ReaderFileIns } from './UseCases/Read/ReadFile'
 import { ProcessorData } from './UseCases/ProcessData/ProcessorData'
 import {Table} from './UseCases/Tables/Table/TableUseCase'
 import { HtmlParser } from './UseCases/ProcessData/HtmlParser'
+import { WriteFileIns } from './UseCases/Write/WriteFile'
+import { WritePdf } from './UseCases/Write/WritePdf'
 
 (async () =>{
 
@@ -10,7 +12,10 @@ import { HtmlParser } from './UseCases/ProcessData/HtmlParser'
 
   if (dataProcess != undefined){
     const tableCsv = new Table(dataProcess)
-    console.log(await HtmlParser.CreateHtml(tableCsv.ObjectTable))
+    const htmlDocument = await HtmlParser.CreateHtml(tableCsv.ObjectTable)
+    //const resultCreateFile = await WriteFileIns.Write(htmlDocument)
+    //console.log(resultCreateFile)
+    WritePdf.WritePdf('test', htmlDocument)
   }
 
 })()

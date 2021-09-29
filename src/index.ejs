@@ -10,9 +10,11 @@
   <main>
     <table>
       <thead>
+       <tr>
         <% headerTable.forEach(elementHead => { %>
-         <tr><%- elementHead  %> </tr>
-        <% }) %>
+          <td><%- elementHead  %> </td>
+         <% }) %>
+       </tr>
       </thead>
       <tbody>
         <% bodyTable.forEach(elementBody => { %>
